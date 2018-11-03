@@ -104,7 +104,7 @@ if (money >= 30) {
   console.log("Come back when you have enough money.");
 }
 
-/*
+
 // **** Problem 6: Guess My Number ****
 // Write code that plays a simple number guessing game with a user. You can
 // use any number you like as myNum. If the user guesses the number, print
@@ -114,4 +114,12 @@ if (money >= 30) {
 console.log("*** Problem 6: Guess My Number ***");
 let myNum = 5;
 let guess = READLINE.question("I'm thinking of a number. Guess it: ");
-*/
+if (guess == myNum) {
+  console.log("Congratulations!");
+} else if (myNum - guess <= 3 && myNum - guess >= 0) {
+  console.log("Warm!");
+} else if (guess - myNum <= 3 && guess - myNum >= 0) {
+  console.log("Warm!");
+} else {
+  console.log("Cold!");
+}
