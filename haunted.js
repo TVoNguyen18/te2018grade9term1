@@ -3,11 +3,9 @@ const READLINE = require("readline-sync");
 // use whatever properties you want for the player object
 let player = {
   name: undefined,
-  courage: 0,
-  intellect: 0,
-  strength: 0,
+  fanism: 0,
   charm: 0,
-  weapon: undefined,
+  rush: 0,
   item: "magic anime portal",
 };
 
@@ -41,6 +39,7 @@ if (playerAnswer == 1) {
   playerAnswer = READLINE.question("Do you scream your head off (1), or do you challenge him to a fight? (2)? ");
 
   if (playerAnswer == 1) {
+    player.fanism++;
     console.log("He is politely weirded out by your enthusiasm and invites you to his fast food restaurant joint");
     playerAnswer = READLINE.question("Do you get the black pepper fries (1) or just sit there (2)? ");
 
@@ -57,10 +56,18 @@ if (playerAnswer == 1) {
       }
     } else if (playerAnswer == 2) {
       playerAnswer = READLINE.question("You have to order! Iced coffee (1) or apple pie (2)? ");
+      if (playerAnswer == 1) {
+        console.log("The coffee was pretty good...");
+      } else if (playerAnswer == 2) {
+        console.log("As Maou prepared it, you think to yourself, 'Why would MgRonald's have apple pie?'");
+      } else {
+        console.log("You are not doing this right...");
+      }
     } else {
       console.log("You are not doing this right!");
     }
   } else if (playerAnswer == 2) {
+    player.rush++;
     console.log("You hold the stolen sword Better Half to his face.");
     playerAnswer = READLINE.question("Do you fight (1) or chicken out (2)? ");
 
@@ -79,7 +86,23 @@ if (playerAnswer == 1) {
   playerAnswer = READLINE.question("You meet Ciel Phantomhive. Do you scream (1) or be haughty (2)? ");
 
   if (playerAnswer == 1) {
+    player.fanism++;
     console.log("You get kicked out of the house by Ciel.");
+  } else if (playerAnswer == 2) {
+    player.rush++;
+    console.log("Ciel gets angry at you and Sebastian appears.")
+    playerAnswer = READLINE.question("Do you scream (1) or stomp away (2)? ");
+
+    if (playerAnwer == 1) {
+      player.fanism++;
+      console.log("Sebastian gets perplexed, and life is awkward...");
+    } else if (playerAnswer == 2) {
+      console.log("WHY WOULD YOU?????");
+    } else {
+      console.log("You are not doing this right...");
+    }
+  } else {
+    console.log("You are not doing this right...");
   }
 
 } else {
