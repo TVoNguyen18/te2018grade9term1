@@ -4,7 +4,6 @@ const READLINE = require("readline-sync");
 let player = {
   name: undefined,
   fanism: 0,
-  charm: 0,
   rush: 0,
   item: "magic anime portal",
 };
@@ -48,8 +47,10 @@ if (playerAnswer == 1) {
       playerAnswer = READLINE.question("Do you get Maou to fix it with magic (1) or get coffee instead (2)? ");
 
       if (playerAnswer == 1) {
+        player.rush++;
         console.log("He fixed it! But it will be your fault if he has no magic to fight his enemies...");
       } else if (playerAnswer == 2) {
+        player.fanism++;
         console.log("The coffee was pretty good...");
       } else {
         console.log("You are not doing this right...");
@@ -72,8 +73,10 @@ if (playerAnswer == 1) {
     playerAnswer = READLINE.question("Do you fight (1) or chicken out (2)? ");
 
     if (playerAnswer == 1) {
+      player.rush++;
       console.log("Darn! The Demon Generals has arrived to fight you!");
     } else if (playerAnswer == 2) {
+      player.fanism++;
       console.log("You got trounced for being ridiculous...");
     } else {
       console.log("You are not doing this right!");
@@ -93,10 +96,11 @@ if (playerAnswer == 1) {
     console.log("Ciel gets angry at you and Sebastian appears.")
     playerAnswer = READLINE.question("Do you scream (1) or stomp away (2)? ");
 
-    if (playerAnwer == 1) {
+    if (playerAnswer == 1) {
       player.fanism++;
       console.log("Sebastian gets perplexed, and life is awkward...");
     } else if (playerAnswer == 2) {
+      player.rush++;
       console.log("WHY WOULD YOU?????");
     } else {
       console.log("You are not doing this right...");
@@ -110,3 +114,8 @@ if (playerAnswer == 1) {
 }
 
 console.log("The portal malfunctions and you return to real life, where a zombie apocalypse is happening all around you!");
+console.log("Here is your score: ");
+console.log(`Name: ${name}
+  Fanism: ${fanism}
+  Rush: ${rush}
+  Item: ${item}`);
