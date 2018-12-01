@@ -27,8 +27,8 @@ let player = {
 // }
 // console.log("Thanks for playing!");
 
-console.log("A magical anime portal has appeared in your hands.");
 player.name = READLINE.question("What is your name? ");
+console.log("A magical anime portal has appeared in your hands.");
 console.log("Okay. " + player.name + ", choose which anime to teleport to!");
 let playerAnswer = READLINE.question("Do you choose The Devil is a Part-Timer! (1) or Black Butler (2)? ");
 
@@ -115,7 +115,8 @@ if (playerAnswer == 1) {
 
 console.log("The portal malfunctions and you return to real life, where a zombie apocalypse is happening all around you!");
 console.log("Here is your score: ");
-console.log(`Name: ${name}
-  Fanism: ${fanism}
-  Rush: ${rush}
-  Item: ${item}`);
+
+console.log(`Name: ${player.name}
+  Fanism: ${player.fanism}
+  Rush: ${player.rush}
+  Item: ${player.item}`);
