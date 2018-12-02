@@ -18,8 +18,10 @@ let fantasyName;
   real last name.
 *******************************************************************************/
 
-function getNewFirstName() {
-
+function getNewFirstName(fName, lName) {
+  let lowercaseLName = lName.toLowerCase();
+  return fName[0] + fName[1] + fName[2] +
+    lowercaseLName[0] + lowercaseLName[1];
 }
 
 /******************************************************************************
@@ -30,8 +32,10 @@ function getNewFirstName() {
   city where they were born.
 *******************************************************************************/
 
-function getNewLastName() {
-
+function getNewLastName(momMName, cityBornIn) {
+  let lCCityBornIn = cityBornIn.toLowerCase();
+  return momMName[0] + momMName[1] +lCCityBornIn[0] +
+    lCCityBornIn[1] + lCCityBornIn[2];
 }
 
 /******************************************************************************
@@ -41,8 +45,19 @@ function getNewLastName() {
   letters of their real last name, reversed, and the model of their dream car.
 *******************************************************************************/
 
-function getTitle() {
+function reverseLNString(str) {
+  var splitString = str.split("");
+  var reverseArray = splitString.reverse();
+  var joinArray = reverseArray.join("");
+  var newLN = joinArray[0].toUpperCase() + joinArray.slice(1);
+  return newLN;
+}
 
+function getTitle(lName, dCModel) {
+  var newDCModel = dCModel.toLowerCase();
+  var reverseName = reverseLNString(lName);
+  return reverseName[0] + reverseName[1] +
+    reverseName[2] + newDCModel;
 }
 
 /******************************************************************************
@@ -52,8 +67,8 @@ function getTitle() {
   title, " of ", and the name of the street they live on.
 *******************************************************************************/
 
-function getHonorific() {
-
+function getHonorific(title, streetName) {
+  return title + " of " + streetName;
 }
 
 /******************************************************************************
@@ -66,8 +81,18 @@ function getHonorific() {
   to see.
 *******************************************************************************/
 
-function run() {
-
+function run(firstName, lastName, momMaidenName, cityBorn, dreamCar, street) {
+  firstName = READLINE.question("First name? ");
+  lastName = READLINE.question("Last name? ");
+  momMaidenName = READLINE.question("Mom's maiden name? ");
+  cityBorn = READLINE.question("City born in? ");
+  dreamCar = READLINE.question("Dream car? ");
+  street = READLINE.question("Street? ");
+  let resultFN = getNewFirstName(firstName, lastName);
+  let resultLN = getNewLastName(momMaidenName, cityBorn);
+  let resultTitle = getTitle(lastName, dreamCar);
+  let resultHonorific = getHonorific(resultTitle, street);
+  console.log(resultFN + " " + resultLN + ", " + resultHonorific);
 }
 
 // Run the program!
