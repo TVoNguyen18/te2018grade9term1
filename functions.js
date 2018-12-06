@@ -1,3 +1,22 @@
+function greeting() {
+  console.log("Ayo ladies and gentlemen! If you're ready then I'll start, yeah!");
+}
+
+greeting();
+
+function farewell() {
+  console.log("When will I see you again, oh oh oh oh?");
+}
+
+farewell();
+
+function printGreetsAndByes() {
+  greeting();
+  farewell();
+}
+
+printGreetsAndByes();
+
 /******************************************************************************
                                    sumDouble
 Instructions:
