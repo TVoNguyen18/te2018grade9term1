@@ -27,7 +27,7 @@ const READLINE = require("READLINE-sync");
   not (false).
 *******************************************************************************/
 
-let contacts; 
+let contacts;
 let quit;
 
 /******************************************************************************
@@ -38,7 +38,7 @@ let quit;
 *******************************************************************************/
 
 function printGreeting() {
-
+  console.log("Hi, I'm Thanhthanh Nguyen! I am not a creative person!");
 }
 
 /******************************************************************************
@@ -49,9 +49,14 @@ function printGreeting() {
   -quit initialized as false
 *******************************************************************************/
 
-function setup() {
-
+function setup(contacts, quit) {
+  contacts = [];
+  quit = false;
 }
+
+//console.log(setup(contacts, quit));
+//console.log(contacts + "\n" + quit);
+console.log(quit);
 
 /******************************************************************************
                                 getNameInput()
