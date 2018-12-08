@@ -119,10 +119,13 @@ let myiPhone = {
     } else {
       if (this.batteryPercentage > 0) {
         this.batteryPercentage -= hoursUsed * 10;
-        console.log("Power remaining: " + this.batteryPercentage + " percent.");
+        if (this.batteryPecentage < 0) {
+          console.log("Not possible; your iPhone would have died already!");
+        } else {
+          console.log("Power remaining: " + this.batteryPercentage + " percent.");
+        }
       } else {
-        console.log("Charge, or your iPhone will turn off!");
-        console.log("Your remaining power: " + this.batteryPercentage + " percent.");
+        console.log("Not possible; your iPhone would have died already!");
       }
     }
   }
