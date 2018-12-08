@@ -88,11 +88,16 @@ function run(firstName, lastName, momMaidenName, cityBorn, dreamCar, street) {
   cityBorn = READLINE.question("City born in? ");
   dreamCar = READLINE.question("Dream car? ");
   street = READLINE.question("Street? ");
+
+  console.log("\nAlright, calculating your name now, please wait!");
+
   let resultFN = getNewFirstName(firstName, lastName);
   let resultLN = getNewLastName(momMaidenName, cityBorn);
   let resultTitle = getTitle(lastName, dreamCar);
   let resultHonorific = getHonorific(resultTitle, street);
-  console.log(resultFN + " " + resultLN + ", " + resultHonorific);
+  console.log("\n*****************************************\n\n" +
+        "Introducing the one, the only...\n");
+  console.log("*" + resultFN + " " + resultLN + ", " + resultHonorific + "!*");
 }
 
 // Run the program!
