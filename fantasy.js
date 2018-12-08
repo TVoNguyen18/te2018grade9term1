@@ -20,8 +20,9 @@ let fantasyName;
 
 function getNewFirstName(fName, lName) {
   let lowercaseLName = lName.toLowerCase();
-  return fName[0] + fName[1] + fName[2] +
-    lowercaseLName[0] + lowercaseLName[1];
+  // return fName[0] + fName[1] + fName[2] +
+  //   lowercaseLName[0] + lowercaseLName[1];
+  return fName.substring(0, 3) + lowercaseLName.substring(0, 2);
 }
 
 /******************************************************************************
@@ -34,8 +35,9 @@ function getNewFirstName(fName, lName) {
 
 function getNewLastName(momMName, cityBornIn) {
   let lCCityBornIn = cityBornIn.toLowerCase();
-  return momMName[0] + momMName[1] +lCCityBornIn[0] +
-    lCCityBornIn[1] + lCCityBornIn[2];
+  // return momMName[0] + momMName[1] +lCCityBornIn[0] +
+  //   lCCityBornIn[1] + lCCityBornIn[2];
+  return momMName.substring(0, 2) + lCCityBornIn.substring(0, 3);
 }
 
 /******************************************************************************
@@ -56,8 +58,9 @@ function reverseLNString(str) {
 function getTitle(lName, dCModel) {
   var newDCModel = dCModel.toLowerCase();
   var reverseName = reverseLNString(lName);
-  return reverseName[0] + reverseName[1] +
-    reverseName[2] + newDCModel;
+  // return reverseName[0] + reverseName[1] +
+  //   reverseName[2] + newDCModel;
+  return reverseName.substring(0, 3) + newDCModel;
 }
 
 /******************************************************************************
