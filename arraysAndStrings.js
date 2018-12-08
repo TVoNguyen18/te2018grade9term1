@@ -8,10 +8,23 @@ let jordans = ['Jordan 13s', 'Jordans 5s', 'Jordan 10s', 'Jordan 7s'];
 
 console.log(jordans.toString());
 
+// adds an element to the end
+jordans.push('Jordan 1s');
 
+console.log(jordans);
 
+// removes last element
+console.log(jordans.pop());
 
+console.log(jordans);
 
+// removes first element
+jordans.shift();
+
+console.log(jordans);
+
+// adds element to the beginning
+jordans.unshift('Jordan 13s');
 
 
 
