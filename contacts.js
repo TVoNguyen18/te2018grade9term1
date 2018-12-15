@@ -303,6 +303,8 @@ function addContact() {
   let getName = getNameInput();
   let getNumber = getNumberInput();
   let getEmailAddress = getEmailInput();
+  let length;
+  let i;
 
   let contactsObject = {
     name: getName,
@@ -310,13 +312,18 @@ function addContact() {
     emailAddress: getEmailAddress
   }
 
-  contacts[0] = contactsObject;
+  contacts.push(contactsObject);
 
-  contacts.sort(compareContacts());
+  if (contacts.length > 0) {
+    for (i = 1; i < contacts.length; i++) {
+      contacts.sort(compareContacts(contacts[0].name, contacts[1].name));
+    }
+  }
 }
 
 addContact();
 addContact();
+console.log(contacts);
 
 /******************************************************************************
                                 getContactIndex()
