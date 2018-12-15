@@ -38,7 +38,8 @@ let quit;
 *******************************************************************************/
 
 function printGreeting() {
-  console.log("Hi, I'm Thanhthanh Nguyen! I am not a creative person!");
+  console.log("Hi, I'm Thanhthanh Nguyen! I am not a creative person!\n" +
+        "LET'S GET THIS BREAD!!!");
 }
 
 /******************************************************************************
@@ -49,14 +50,12 @@ function printGreeting() {
   -quit initialized as false
 *******************************************************************************/
 
-function setup(contacts, quit) {
-  contacts = [];
+function setup() {
+  contacts = new Array();
   quit = false;
 }
 
-//console.log(setup(contacts, quit));
-//console.log(contacts + "\n" + quit);
-console.log(quit);
+setup();
 
 /******************************************************************************
                                 getNameInput()
@@ -68,8 +67,16 @@ console.log(quit);
 *******************************************************************************/
 
 function getNameInput() {
+  let validName = READLINE.question("Name of your contact? ");
 
+  while (validName.length == 0) {
+    validName = READLINE.question("Name must be at least one character long! Reenter: ");
+  }
+
+  return validName;
 }
+
+//console.log(getNameInput());
 
 /******************************************************************************
                                 checkNumber()
@@ -85,8 +92,39 @@ function getNameInput() {
 *******************************************************************************/
 
 function checkNumber(number) {
+  let newNum = number;
+  let actualNum = parseInt(number);
+  let tmp = actualNum;
+  let count = 0;
+  let catcher = 0;
+  let i;
 
+  for (i = 0; i < (number.length); i++) {
+    if (isNaN(newNum[i]) == true) {
+      catcher = 0;
+      i = newNum.length;
+    } else {
+      catcher++;
+    }
+  }
+
+  if (catcher) {
+    do {
+      count++;
+      tmp = parseInt(tmp / 10);
+    } while (tmp != 0);
+
+    if (count === 10 && actualNum > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
+
+//console.log(checkNumber("2263300000"));
 
 /******************************************************************************
                                 getNumberInput()
@@ -95,8 +133,15 @@ function checkNumber(number) {
   then return it. Use checkNumber() to validate phone numbers.
 *******************************************************************************/
 function getNumberInput() {
+  let pH = READLINE.question("Enter in a phone number! ");
 
+  while (checkNumber(pH) == false) {
+    pH = READLINE.question("Enter in a VALID phone number! ");
+  }
+  return pH;
 }
+
+//console.log(getNumberInput());
 
 /******************************************************************************
                                 checkEmail()
@@ -113,8 +158,53 @@ function getNumberInput() {
 *******************************************************************************/
 
 function checkEmail(email) {
-
+  let i;
+  let catcher = 0;
+  let catcher2 = 0;
+  if (email.length > 0) {
+    for (i = 0; i < (email.length); i++) {
+      if (email[0] == '@') {
+        catcher = 0;
+        i = email.length;
+      } else {
+        if (email[i] == '@') {
+          catcher++;
+        }
+      }
+    }
+    if (catcher > 1) {
+      catcher = 0;
+    }
+    for (i = (email.length - 4); i < email.length; i++) {
+      if (i === (email.length - 4) && email[i] == '.') {
+        catcher2++;
+      } else if (i === email.length - 3 &&
+        (email[i] == 'c' || email[i] == 'o' || email[i] == 'n' || email[i] == 'e')) {
+          catcher2++;
+      } else if (i === email.length - 2 &&
+        (email[i] == 'o' || email[i] == 'r' || email[i] == 'e' || email[i] == 'd')) {
+          catcher2++;
+      } else if (i == email.length - 1 &&
+        (email[i] == 'm' || email[i] == 'g' || email[i])) {
+          catcher2++;
+      } else {
+        catcher2 = 0;
+        i = email.length;
+      }
+    }
+  }
+  if (email.length < 0) {
+    return true;
+  } else {
+    if (catcher && catcher2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
+
+//console.log(checkEmail("animefanlovely@askaway.com"));
 
 /******************************************************************************
                                 getEmailInput()
@@ -124,8 +214,15 @@ function checkEmail(email) {
 *******************************************************************************/
 
 function getEmailInput() {
+  let email = READLINE.question("Dear user, kindly enter an email address: ");
+  while (checkEmail(email) == false) {
+    email = READLINE.question("Dear user, kindly enter a VALID email address: ");
+  }
 
+  return email;
 }
+
+//console.log(getEmailInput());
 
 /******************************************************************************
                                 compareContacts()
@@ -146,8 +243,39 @@ function getEmailInput() {
 *******************************************************************************/
 
 function compareContacts(a, b) {
+  let lowercaseA = a.toLowerCase();
+  let lowercaseB = b.toLowerCase();
+  let compareLength;
+  let catcher = 0;
+  let i;
+  let returnVar;
 
+  lowercaseA = lowercaseA.replace(/\s/g, '');
+  lowercaseB = lowercaseB.replace(/\s/g, '');
+  console.log(lowercaseA);
+  console.log(lowercaseB);
+
+  if (a.length > b.length) {
+    compareLength = b.length;
+  } else {
+    compareLength = a.length;
+  }
+
+  if (lowercaseA[0] < lowercaseB[0]) {
+    returnVar = 1;
+  } else if (lowercaseA[0] > lowercaseB[0]) {
+    returnVar = -1;
+  } else {
+    returnVar = 0;
+  }
+
+  if (returnVar == 0) {
+    
+  }
 }
+
+
+compareContacts("Hi Guys", "Dab On It");
 
 /******************************************************************************
                                 addContact()
