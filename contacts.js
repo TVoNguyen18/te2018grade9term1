@@ -242,8 +242,8 @@ function compareContacts(a, b) {
 
   lowercaseA = lowercaseA.replace(/\s/g, '');
   lowercaseB = lowercaseB.replace(/\s/g, '');
-  console.log(lowercaseA);
-  console.log(lowercaseB);
+  //console.log(lowercaseA);
+  //console.log(lowercaseB);
 
   if (a.length > b.length) {
     compareLength = b.length;
@@ -314,9 +314,10 @@ function addContact() {
 
   contacts.push(contactsObject);
 
-  if (contacts.length > 0) {
+  if (contacts.length > 1) {
     for (i = 1; i < contacts.length; i++) {
-      contacts.sort(compareContacts(contacts[0].name, contacts[1].name));
+      //contacts.sort(compareContacts);
+      
     }
   }
 }
