@@ -39,7 +39,7 @@ let quit;
 
 function printGreeting() {
   console.log("Hi, I'm Thanhthanh Nguyen! I am not a creative person!\n" +
-        "LET'S GET THIS BREAD!!!");
+        "This is your contacts book, now LET'S GET THIS BREAD!!!");
 }
 
 /******************************************************************************
@@ -303,7 +303,8 @@ function addContact() {
   let getName = getNameInput();
   let getNumber = getNumberInput();
   let getEmailAddress = getEmailInput();
-  let length;
+  let catcher;
+  let tmp;
   let i;
 
   let contactsObject = {
@@ -315,13 +316,19 @@ function addContact() {
   contacts.push(contactsObject);
 
   if (contacts.length > 1) {
-    for (i = 1; i < contacts.length; i++) {
+    for (i = 0; i < contacts.length; i++) {
       //contacts.sort(compareContacts);
-      
+      catcher = compareContacts(contacts[contacts.length - 1].name, contacts[i].name);
+      if (catcher === 1) {
+        tmp = contacts[0].name;
+        contacts[0].name = contacts[i].name;
+        contacts[i].name = tmp;
+      }
     }
   }
 }
 
+addContact();
 addContact();
 addContact();
 console.log(contacts);
@@ -338,7 +345,11 @@ console.log(contacts);
 *******************************************************************************/
 
 function getContactIndex(contactName) {
+  let i;
 
+  for (i = 0; i < contacts.length; i++) {
+
+  }
 }
 
 /******************************************************************************
