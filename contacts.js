@@ -76,8 +76,6 @@ function getNameInput() {
   return validName;
 }
 
-//console.log(getNameInput());
-
 /******************************************************************************
                                 checkNumber()
 
@@ -124,8 +122,6 @@ function checkNumber(number) {
   }
 }
 
-//console.log(checkNumber("2263300000"));
-
 /******************************************************************************
                                 getNumberInput()
 
@@ -140,8 +136,6 @@ function getNumberInput() {
   }
   return pH;
 }
-
-//console.log(getNumberInput());
 
 /******************************************************************************
                                 checkEmail()
@@ -204,8 +198,6 @@ function checkEmail(email) {
   }
 }
 
-//console.log(checkEmail("animefanlovely@askaway.com"));
-
 /******************************************************************************
                                 getEmailInput()
 
@@ -221,8 +213,6 @@ function getEmailInput() {
 
   return email;
 }
-
-//console.log(getEmailInput());
 
 /******************************************************************************
                                 compareContacts()
@@ -270,12 +260,28 @@ function compareContacts(a, b) {
   }
 
   if (returnVar == 0) {
-
+    for (i = 1; i < compareLength; i++) {
+      if (lowercaseA[i] < lowercaseB[i]) {
+        returnVar = -1;
+      } else if (lowercaseA[i] > lowercaseB[i]) {
+        returnVar = 1;
+      } else {
+        returnVar = 0;
+      }
+    }
   }
+  if (returnVar == 0) {
+    if (a.length > b.length) {
+      returnVar = 1;
+    } else if (a.length < b.length){
+      returnVar = -1;
+    } else {
+      returnVar = 0;
+    }
+  }
+
+  return returnVar;
 }
-
-
-compareContacts("Hi Guys", "Dab On It");
 
 /******************************************************************************
                                 addContact()
@@ -294,8 +300,23 @@ compareContacts("Hi Guys", "Dab On It");
 *******************************************************************************/
 
 function addContact() {
+  let getName = getNameInput();
+  let getNumber = getNumberInput();
+  let getEmailAddress = getEmailInput();
 
+  let contactsObject = {
+    name: getName,
+    number: getNumber,
+    emailAddress: getEmailAddress
+  }
+
+  contacts[0] = contactsObject;
+
+  contacts.sort(compareContacts());
 }
+
+addContact();
+addContact();
 
 /******************************************************************************
                                 getContactIndex()

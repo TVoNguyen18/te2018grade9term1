@@ -31,20 +31,33 @@ let maria = {
   email: "maria@csedge.org"
 }
 
+let bella = {
+  name: "Coach Bella",
+  number: "555 555 5556",
+  email: "bella@csedge.org"
+}
+
 let contacts = [wolf, zakiya, caryn, chike, maria];
 
-for (let i = 0; i < contacts.length; i++) {
-  // console.log(contacts[i]);
-  // console.log(contacts[i].name);
-  // if ((i + 1) < contacts.length) {
-  //   console.log(contacts[i + 1].number);
-  // }
-  //console.log(contacts[i].name);
-  if (contacts[i].name == "Coach Zakiya" || contacts[i].name == "Coach Maria") {
-    console.log(contacts[i].name);
-    console.log(contacts[i].number);
-    //contacts[i].number = READLINE.question("Give us a new phone number! ");
-    contacts[i].number = "000 000 0000";
-    console.log(contacts[i].number);
-  }
-}
+contacts.push(bella);
+
+//console.log(contacts.splice(2,));
+console.log(contacts.splice(2, 1));
+
+//console.log(contacts);
+
+// for (let i = 0; i < contacts.length; i++) {
+//   // console.log(contacts[i]);
+//   // console.log(contacts[i].name);
+//   // if ((i + 1) < contacts.length) {
+//   //   console.log(contacts[i + 1].number);
+//   // }
+//   //console.log(contacts[i].name);
+//   if (contacts[i].name == "Coach Zakiya" || contacts[i].name == "Coach Maria") {
+//     console.log(contacts[i].name);
+//     console.log(contacts[i].number);
+//     //contacts[i].number = READLINE.question("Give us a new phone number! ");
+//     contacts[i].number = "000 000 0000";
+//     console.log(contacts[i].number);
+//   }
+// }
