@@ -262,15 +262,15 @@ function compareContacts(a, b) {
   }
 
   if (lowercaseA[0] < lowercaseB[0]) {
-    returnVar = 1;
-  } else if (lowercaseA[0] > lowercaseB[0]) {
     returnVar = -1;
+  } else if (lowercaseA[0] > lowercaseB[0]) {
+    returnVar = 1;
   } else {
     returnVar = 0;
   }
 
   if (returnVar == 0) {
-    
+
   }
 }
 
