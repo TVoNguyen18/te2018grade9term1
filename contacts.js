@@ -305,7 +305,7 @@ function addContact() {
   let getEmailAddress = getEmailInput();
   let catcher;
   let tmp;
-  let i;
+  let i, j;
 
   let contactsObject = {
     name: getName,
@@ -313,22 +313,22 @@ function addContact() {
     emailAddress: getEmailAddress
   }
 
-  contacts.push(contactsObject);
+  contacts.unshift(contactsObject);
 
   if (contacts.length > 1) {
     for (i = 0; i < contacts.length; i++) {
-      //contacts.sort(compareContacts);
-      catcher = compareContacts(contacts[contacts.length - 1].name, contacts[i].name);
-      if (catcher === 1) {
-        tmp = contacts[0].name;
-        contacts[0].name = contacts[i].name;
-        contacts[i].name = tmp;
+      for (j = i + 1; j < contacts.length; j++) {
+        catcher = compareContacts(contacts[i].name, contacts[j].name);
+        if (catcher === 1) {
+          tmp = contacts[i].name;
+          contacts[i].name = contacts[j].name;
+          contacts[j].name = tmp;
+        }
       }
     }
   }
 }
 
-addContact();
 addContact();
 addContact();
 console.log(contacts);
@@ -346,11 +346,21 @@ console.log(contacts);
 
 function getContactIndex(contactName) {
   let i;
+  let returnValue = -1;
+  let tmpCN = contactName.toLowerCase();
+  let genTmp;
 
   for (i = 0; i < contacts.length; i++) {
-
+    genTmp = contacts[i].name.toLowerCase();
+    if (tmpCN === genTmp) {
+      returnValue = i;
+    }
   }
+
+  return returnValue;
 }
+
+console.log(getContactIndex('Jack Ma'));
 
 /******************************************************************************
                                 removeContact()
