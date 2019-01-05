@@ -320,9 +320,9 @@ function addContact() {
       for (j = i + 1; j < contacts.length; j++) {
         catcher = compareContacts(contacts[i].name, contacts[j].name);
         if (catcher === 1) {
-          tmp = contacts[i].name;
-          contacts[i].name = contacts[j].name;
-          contacts[j].name = tmp;
+          tmp = contacts[i];
+          contacts[i] = contacts[j];
+          contacts[j] = tmp;
         }
       }
     }
@@ -360,8 +360,6 @@ function getContactIndex(contactName) {
   return returnValue;
 }
 
-console.log(getContactIndex('Jack Ma'));
-
 /******************************************************************************
                                 removeContact()
 
@@ -376,8 +374,20 @@ console.log(getContactIndex('Jack Ma'));
 *******************************************************************************/
 
 function removeContact() {
+  let rName = getNameInput();
+  let i;
+  let tmp;
 
+  for (i = 0; i < contacts.length; i++) {
+    tmp = getContactIndex(rName);
+    if (tmp != -1) {
+      contacts.splice(tmp, 1);
+    }
+  }
 }
+
+removeContact();
+console.log(contacts);
 
 /******************************************************************************
                                 displayUpdateMenu()
