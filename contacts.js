@@ -283,6 +283,11 @@ function compareContacts(a, b) {
   return returnVar;
 }
 
+function getNoteInput() {
+  let note = READLINE.question("Enter your notes for this contact: ");
+  return note;
+}
+
 /******************************************************************************
                                 addContact()
 
@@ -303,6 +308,7 @@ function addContact() {
   let getName = getNameInput();
   let getNumber = getNumberInput();
   let getEmailAddress = getEmailInput();
+  let getNote = getNoteInput();
   let catcher;
   let tmp;
   let i, j;
@@ -310,7 +316,8 @@ function addContact() {
   let contactsObject = {
     name: getName,
     number: getNumber,
-    emailAddress: getEmailAddress
+    emailAddress: getEmailAddress,
+    note: getNote
   }
 
   contacts.unshift(contactsObject);
@@ -386,9 +393,6 @@ function removeContact() {
   }
 }
 
-removeContact();
-console.log(contacts);
-
 /******************************************************************************
                                 displayUpdateMenu()
 
@@ -410,7 +414,83 @@ console.log(contacts);
 *******************************************************************************/
 
 function displayUpdateMenu(contactIndex) {
+  let answer;
+  let i, j;
+  let tmp;
+  let catcher;
+  do {
+    console.log("\n1) Name\n" +
+            "2) Phone Number\n" +
+            "3) Email Address\n" +
+            "4) Notes\n" +
+            "5) Return to Main Menu\n");
+     answer = READLINE.question("Choose an option: ");
 
+     if (answer == 1) {
+       console.log(contactIndex.name);
+       contactIndex.name = getNameInput();
+       if (contacts.length > 1) {
+         for (i = 0; i < contacts.length; i++) {
+           for (j = i + 1; j < contacts.length; j++) {
+             catcher = compareContacts(contacts[i].name, contacts[j].name);
+             if (catcher === 1) {
+               tmp = contacts[i];
+               contacts[i] = contacts[j];
+               contacts[j] = tmp;
+             }
+           }
+         }
+       }
+     } else if (answer == 2) {
+       console.log(contactIndex.number);
+       contactIndex.number = getNumberInput();
+     } else if (answer == 3) {
+       console.log(contactIndex.emailAddress);
+       contactIndex.emailAddress = getEmailInput();
+     } else if (answer == 4) {
+       console.log(contactIndex.note);
+       contactIndex.note = getNoteInput();
+     } else if (answer == 5) {
+       console.log("Finishing up! Here is your contacts book: ");
+       console.log(contacts);
+     } else {
+       console.log("WRONG OPTION!!!");
+     }
+
+     // switch (answer) {
+     //   case 1:
+     //   console.log(contactIndex.name);
+     //   contactIndex.name = getNameInput();
+     //   if (contacts.length > 1) {
+     //     for (i = 0; i < contacts.length; i++) {
+     //       for (j = contactIndex; j < contacts.length; j++) {
+     //         catcher = compareContacts(contacts[i].name, contacts[j].name);
+     //         if (catcher === 1) {
+     //           tmp = contacts[i];
+     //           contacts[i] = contacts[j];
+     //           contacts[j] = tmp;
+     //         }
+     //       }
+     //     }
+     //   }
+     //   break;
+     //   case 2:
+     //   console.log(contactIndex.number);
+     //   contactIndex.number = getNumberInput();
+     //   break;
+     //   case 3:
+     //   console.log(contactIndex.emailAddress);
+     //   contactIndex.emailAddress = getEmailInput();
+     //   break;
+     //   case 4:
+     //   console.log(contactIndex.note);
+     //   contactIndex.note = getNoteInput();
+     //   break;
+     //   default:
+     //   console.log("WRONG OPTION!!!");
+     // }
+
+  } while (answer != 5);
 }
 
 /******************************************************************************
@@ -425,7 +505,15 @@ function displayUpdateMenu(contactIndex) {
 *******************************************************************************/
 
 function updateContact() {
+  let contactName = getNameInput();
+  let index = getContactIndex(contactName);
 
+  if (index != -1) {
+    console.log("Calling displayContactMenu()!");
+    displayContactMenu(contacts[index]);
+  } else {
+    console.log("There are no contacts with this given name.");
+  }
 }
 
 /******************************************************************************
@@ -437,7 +525,16 @@ function updateContact() {
 *******************************************************************************/
 
 function printContactInfo(contactName) {
+  let index = getContactIndex(contactName);
 
+  if (index != -1) {
+    console.log("\nName: " + contacts[index].name +
+            "\nNumber: " + contacts[index].number +
+            "\nEmail Address: " + contacts[index].number +
+            "\nNotes: " + contacts[index].note);
+  } else {
+    console.log("There are no contacts with this given name.");
+  }
 }
 
 /******************************************************************************
