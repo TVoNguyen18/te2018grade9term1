@@ -20,7 +20,7 @@ let m = Math.floor((a + 11 * h + 22 * r) / 451);
 let n = Math.floor((h + r - 7 * m + 114) / 31);
 let p = Math.floor((h + r - 7 * m + 114) % 31);
 
-console.log(
+/*console.log(
 `y = ${y}
 a = ${a}
 b = ${b}
@@ -35,5 +35,5 @@ k = ${k}
 r = ${r}
 m = ${m}
 n = ${n}
-p = ${p}`);
+p = ${p}`);*/
 console.log("In " + y + ", Easter fell on " + n + "/" + (p + 1));
